@@ -1,60 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <div style="max-width: 800px; margin: 50px auto; padding: 20px; font-family: Arial, sans-serif;">
         <h2>Xray URL 生成器</h2>
-        <form id="xrayForm" style="background: #f5f5f5; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+        <form id="xrayForm"
+            style="background: #f5f5f5; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
             <div style="margin-bottom: 15px;">
                 <label for="input" style="display: block; margin-bottom: 5px; font-weight: bold;">输入内容:</label>
-                <textarea 
-                    id="input" 
-                    name="input" 
-                    rows="6" 
-                    cols="50" 
-                    placeholder="请输入配置内容..." 
-                    style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px; resize: vertical;"
-                ></textarea>
+                <textarea id="input" name="input" rows="6" cols="50" placeholder="请输入配置内容..."
+                    style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px; resize: vertical;"></textarea>
             </div>
             <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                <button type="submit" style="background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 14px;">
+                <button type="submit"
+                    style="background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 14px;">
                     确认生成
                 </button>
-                <button type="button" id="clearBtn" style="background: #6c757d; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 14px;">
+                <button type="button" id="clearBtn"
+                    style="background: #6c757d; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 14px;">
                     清空表单
                 </button>
-                <button type="button" id="testApiBtn" style="background: #28a745; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 14px;">
+                <button type="button" id="testApiBtn"
+                    style="background: #28a745; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 14px;">
                     测试 API 解析 (Debug模式)
                 </button>
-                <button type="button" id="testTextBtn" style="background: #17a2b8; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 14px;">
+                <button type="button" id="testTextBtn"
+                    style="background: #17a2b8; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 14px;">
                     测试文本模式
                 </button>
-                <button type="button" id="shortenBtn" style="background: #e91e63; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 14px;">
+                <button type="button" id="shortenBtn"
+                    style="background: #e91e63; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 14px;">
                     生成短地址
                 </button>
             </div>
         </form>
-        
-        <div id="result" style="margin-top: 20px; padding: 15px; background: #e9ecef; border-radius: 4px; display: none;">
+
+        <div id="result"
+            style="margin-top: 20px; padding: 15px; background: #e9ecef; border-radius: 4px; display: none;">
             <h3>生成的 Xray URL:</h3>
-            <div id="urlOutput" style="word-break: break-all; background: white; padding: 10px; border-radius: 4px; border: 1px solid #ddd;"></div>
+            <div id="urlOutput"
+                style="word-break: break-all; background: white; padding: 10px; border-radius: 4px; border: 1px solid #ddd;">
+            </div>
         </div>
-        
-        <div id="shortResult" style="margin-top: 20px; padding: 15px; background: #fff3e0; border-radius: 4px; display: none;">
+
+        <div id="shortResult"
+            style="margin-top: 20px; padding: 15px; background: #fff3e0; border-radius: 4px; display: none;">
             <h3>生成的短地址:</h3>
-            <div id="shortUrlOutput" style="word-break: break-all; background: white; padding: 10px; border-radius: 4px; border: 1px solid #ddd; margin-bottom: 10px;"></div>
-            <div id="shortUrlInfo" style="font-size: 12px; color: #666; background: #f8f9fa; padding: 8px; border-radius: 4px;"></div>
+            <div id="shortUrlOutput"
+                style="word-break: break-all; background: white; padding: 10px; border-radius: 4px; border: 1px solid #ddd; margin-bottom: 10px;">
+            </div>
+            <div id="shortUrlInfo"
+                style="font-size: 12px; color: #666; background: #f8f9fa; padding: 8px; border-radius: 4px;"></div>
         </div>
-        
-        <div id="apiResult" style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 4px; display: none;">
+
+        <div id="apiResult"
+            style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 4px; display: none;">
             <h3>API 解析结果:</h3>
-            <div id="apiOutput" style="background: white; padding: 10px; border-radius: 4px; border: 1px solid #ddd; max-height: 400px; overflow-y: auto;"></div>
+            <div id="apiOutput"
+                style="background: white; padding: 10px; border-radius: 4px; border: 1px solid #ddd; max-height: 400px; overflow-y: auto;">
+            </div>
         </div>
     </div>
 </body>
 <script type="module" src="./js/app.js"></script>
+
 </html>

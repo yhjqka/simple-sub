@@ -24,3 +24,7 @@ https://simple-sublink.deno.dev/
 
 ### 致谢
 inspired by https://github.com/7Sageer/sublink-worker?tab=readme-ov-file
+
+### 原理
+
+使用deno请求订阅，请求订阅使用 `userAgent: "v2rayN/7.14.9"`

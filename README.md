@@ -1,4 +1,4 @@
-## 简单订阅合并器 simple-xray-sublink-worker（开发者体验demo）
+## 简单订阅合并器 simple-xray-sublink-worker (powered by cursor，有一大堆bug)
 
 基于xray结构的订阅合并，由 deno 驱动，可部署到 deno deploy
 
